@@ -103,6 +103,21 @@
           }
         };
 
+         // UC-4 and UC-5 => Password Validation
+         const PasswordInput=document.querySelector('#pwd');
+        const PasswordError=document.querySelector('.pwd-error');
+        PasswordInput.oninput=function(){
+            const PasswordRegex=RegExp('^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$_])[a-zA-Z0-9@#$_]{8}$');
+            if(PasswordRegex.test(PasswordInput.value))
+            {
+                PasswordError.textContent="";
+            }
+            else
+            {
+                PasswordError.textContent="Invalid Password !!";
+            }
+        }
+
 
 
         //For Salary output
