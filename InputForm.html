@@ -88,6 +88,21 @@
             }
         }
 
+         // UC-3 => Mobile Number Validation
+         const MobileNoInput=document.querySelector('#tel');
+        const MobileNoError=document.querySelector('.tel-error');
+        tel.oninput=function(){
+          const MobileNoRegex=RegExp('^[1-9]{2} [6-9]{1}[0-9]{9}$');
+          if(MobileNoRegex.test(MobileNoInput.value))
+          {
+            MobileNoError.textContent="";
+          }
+          else
+          {
+             MobileNoError.textContent="Mobile No is Invalid !!";
+          }
+        };
+
 
 
         //For Salary output
