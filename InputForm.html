@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <link rel="stylesheet" href="../CSS/InputForm.css">
+</head>
+<body>
+    <form>
+        <header class="headerContainer"><h1 style="text-shadow: 2px 1px white;">HTML 5 Input Form</h1></header>
+        <div>
+           <label for="text">text input type for Name : </label>  <!---for is indeicating to id-->
+           <input type="text" id="text" name="text" required>
+           <error-output class="text-error"></error-output>  <!--custome tag for throwing error-->
+        </div>
+        <div>
+            <label for="pwd">password input type : </label>
+            <input type="password" id="pwd" name="pwd" required>
+        </div>
+        <div>
+            <label for="email">Email input type : </label>
+            <input type="email" id="email" name="email" >
+        </div>
+        <div>
+            <label for="url">URL input type : </label>
+            <input type="url" id="url" name="url" >
+        </div>
+        <div>
+            <label for="number">number input type : </label>
+            <input type="number" id="number" name="number" >
+        </div>
+        <div>
+            <label for="tel">Mobile no. input type : </label>
+            <input type="tel" id="tel" name="tel"  required>
+        </div>
+        <div>
+            <label for="search">Search input type : </label>
+            <input type="search" id="search" name="search">
+        </div>
+        <div>
+            <div class="nativeDateTimePicker">
+                <label for="startdate">Choose Start Date : </label>
+                <input type="date" id="startdate" name="startdate" >
+                <span class="validity"></span>
+            </div>  
+        </div>
+        <div>
+            <label for="salary">Mention your salary : </label>
+            <input type="range" id="salary" name="salary" 
+            min="300000" max="500000" step="100" value="350000">
+            <output class="salary-output" for="salary">400000</output> <!--this is the output value of salary showing before implementing event listener-->
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        // UC-1 => Name Regex
+        const text=document.querySelector('#text');
+        const textError=document.querySelector('.text-error');
+        text.addEventListener('input',function()
+        {
+            const NameRegex=RegExp('^[A-Z][A-za-z]{2,}$');
+            if(NameRegex.test(text.value))
+            {
+                textError.textContent="";
+            }
+            else
+            {
+               textError.textContent="First Letter of Name should be Capital !!";
+            }
+        });
+
+
+        //For Salary output
+        const salary=document.querySelector('#salary');
+        const output=document.querySelector('.salary-output');
+        output.textContent=salary.value; //to set value of salary input tag to output text content
+        salary.addEventListener('input',function(){
+            output.textContent=salary.value;
+        })
+    </script>
+</body>
+</html>
